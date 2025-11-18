@@ -6,6 +6,7 @@
       :id="textareaId"
       :value="inputValue"
       :disabled="disabled"
+    
       :rows="rows"
       :autocomplete="autocomplete || 'off'"
       @input="!disabled && handleInput($event)"
@@ -40,6 +41,10 @@ export default {
     label: {
       type: String,
       required: true
+    },
+    required: {
+      type: Boolean,
+      default: true
     },
     inputValue: String,
     disabled: Boolean,

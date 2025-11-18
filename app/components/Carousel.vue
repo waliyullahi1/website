@@ -1,7 +1,7 @@
 <template>
   <div class="relative w-full max-w-4xl mx-auto p-5">
     <!-- Slider container -->
-    <div class="overflow-hidden" @mouseenter="pause" @mouseleave="play">
+    <div class="overflow-hidden">
       <div
         class="flex"
         :style="{
@@ -11,18 +11,24 @@
         @transitionend="onTransitionEnd"
       >
         <!-- Clone last item at start -->
-        <div class="flex-none w-full p-6 space-y-3 rounded-lg shadow-md bg-gray-100">
+        <div
+          class="flex-none w-full p-6 space-y-3 rounded-lg shadow-md "
+        >
           <p class="text-gray-800 text-base leading-relaxed">
             {{ reviewsList[reviewsList.length - 1].text }}
           </p>
-          <h3 class="text-gray-900 font-semibold">{{ reviewsList[reviewsList.length - 1].name }}</h3>
+          <h3 class="text-gray-900 font-semibold">
+            {{ reviewsList[reviewsList.length - 1].name }}
+          </h3>
           <div class="flex items-center gap-2">
             <div class="text-yellow-500 text-xl">
               <span v-for="n in 5" :key="n">
                 {{ n <= Math.round(reviewsList[reviewsList.length - 1].rating) ? '★' : '☆' }}
               </span>
             </div>
-            <span class="text-gray-700 font-medium">{{ reviewsList[reviewsList.length - 1].rating }}/5</span>
+            <span class="text-gray-700 font-medium">
+              {{ reviewsList[reviewsList.length - 1].rating }}/5
+            </span>
           </div>
         </div>
 
@@ -45,7 +51,9 @@
         </div>
 
         <!-- Clone first item at end -->
-        <div class="flex-none w-full p-6 space-y-3 rounded-lg shadow-md bg-gray-100">
+        <div
+          class="flex-none w-full p-6 space-y-3 rounded-lg shadow-md bg-gray-100"
+        >
           <p class="text-gray-800 text-base leading-relaxed">{{ reviewsList[0].text }}</p>
           <h3 class="text-gray-900 font-semibold">{{ reviewsList[0].name }}</h3>
           <div class="flex items-center gap-2">
@@ -77,7 +85,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { ref } from 'vue';
 
 const reviewsList = ref([
   {
@@ -97,11 +105,10 @@ const reviewsList = ref([
   }
 ]);
 
-const currentIndex = ref(1); // Start at first real slide
+// Start at 1 (first real item)
+const currentIndex = ref(1);
 const transitioning = ref(true);
-let autoplayInterval = null;
 
-// Slide controls
 const nextSlide = () => {
   if (!transitioning.value) return;
   transitioning.value = true;
@@ -114,40 +121,24 @@ const prevSlide = () => {
   currentIndex.value--;
 };
 
-// Handle infinite loop
 const onTransitionEnd = () => {
+  // Disable transition temporarily
   transitioning.value = false;
 
   if (currentIndex.value === 0) {
+    // Jump to last real item
     currentIndex.value = reviewsList.value.length;
   } else if (currentIndex.value === reviewsList.value.length + 1) {
+    // Jump to first real item
     currentIndex.value = 1;
   }
 
-  void document.body.offsetHeight; // Force reflow
+  // Force reflow
+  void document.body.offsetHeight;
+
+  // Re-enable transition
   transitioning.value = true;
 };
-
-// Autoplay
-const play = () => {
-  if (autoplayInterval) return;
-  autoplayInterval = setInterval(() => {
-    nextSlide();
-  }, 3000); // 3 seconds
-};
-
-const pause = () => {
-  clearInterval(autoplayInterval);
-  autoplayInterval = null;
-};
-
-onMounted(() => {
-  play();
-});
-
-onBeforeUnmount(() => {
-  pause();
-});
 </script>
 
 <style scoped>

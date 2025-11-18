@@ -218,7 +218,7 @@
                                 </div>
                                 <button @click="toggleDescription(faq)" type="button" class=" ">
                                     <UiTypographyH3><span class=" font-bold text-xl"> <strong>{{ faq.showdescription ?
-                                                '-' : '+' }}</strong> </span></UiTypographyH3>
+                                        '-' : '+' }}</strong> </span></UiTypographyH3>
                                 </button>
                             </div>
 
@@ -238,12 +238,15 @@
 
 
                     <div class="  lg:w-1/2 w-full space-y-5 r">
-                        <UiTypographyP class=" "> <span class=" 0 e px-2 py-1 font-bold">Testimonials</span></UiTypographyP>
-                        <UiTypographyH2> <span class=" sm:text-5xl text-3xl leading-snug font-extrabold">What Our Client Says</span>
+                        <UiTypographyP class=" "> <span class=" 0 e px-2 py-1 font-bold">Testimonials</span>
+                        </UiTypographyP>
+                        <UiTypographyH2> <span class=" sm:text-5xl text-3xl leading-snug font-extrabold">What Our Client
+                                Says</span>
                         </UiTypographyH2>
-                        <UiTypographyP>Trusted by businesses nationwide for reliable trademark protection.</UiTypographyP>
+                        <UiTypographyP>Trusted by businesses nationwide for reliable trademark protection.
+                        </UiTypographyP>
                         <div class="pt-4 bg-gray-100 0  sm:flex block sm:space-y-0  space-y-4 sm:space-x-4">
-                            <Carousel />
+                          <Carousel />
                         </div>
 
 
@@ -256,6 +259,8 @@
             </Container>
         </section>
 
+        
+
 
 
 
@@ -266,7 +271,6 @@
 
 <script setup>
 import { ref } from 'vue'
-import Carousel from '~/components/Carousel.vue'
 
 //Refs
 const trademarkformFunctions = ref(null)
@@ -299,6 +303,11 @@ const reasonChooseUsList = ref([
         image: 'dedicated-icon.png'
     }
 ])
+
+
+
+
+
 
 const stepToTakeList = ref([
     {
