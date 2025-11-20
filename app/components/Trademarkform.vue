@@ -36,11 +36,11 @@
           </UiTypographyP>
 
           <form class="px-4 pt-2 space-y-6">
-            <FormInput label="Full Name" type="text" name="fullname" />
-            <FormInput label="Email Address" type="email" name="email" />
-            <FormInput label="Phone Number" type="text" name="phone" />
-            <FormTextarea label="Message" name="message" />
-            <FormButton>Submit</FormButton>
+            <FormInput label="Full Name" :required="true" v-model:inputValue="form.fullname" type="text" name="fullname" />
+            <FormInput label="Email Address" :required="true" v-model:inputValue="form.email" type="email" name="email" />
+            <FormInput label="Phone Number" :required="true" v-model:inputValue="form.phone" type="text" name="phone" />
+            <FormTextarea label="Message" :required="true" v-model:inputValue="form.message" name="message" />
+            <FormButton @click="submit" :loading="isLoading" type="submit">Submit</FormButton>
           </form>
 
         </div>
@@ -53,11 +53,17 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useFormStore } from '@/stores/formStore'
+const formStore = useFormStore()
+const form = formStore.form  
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 // Visibility states
 const show = ref(false)        // controls if section appears
 const showform = ref(false)    // controls slide animation
-
+const isLoading = ref(false)
 // Emits
 const emit = defineEmits(['closeform', 'openform'])
 
@@ -71,7 +77,6 @@ const openForm = () => {
   }, 20)
 }
 
-// CLOSE FORM
 const closeForm = () => {
   showform.value = false        // slide down animation
   emit('closeform')
@@ -80,6 +85,28 @@ const closeForm = () => {
     show.value = false          // fully hide
   }, 200)                       // matches duration-700
 }
+
+const submit = (e) => {
+  isLoading.value = true
+
+e.preventDefault()
+setTimeout(()=>{
+  
+   router.push('/forms')
+ isLoading.value = false
+
+}, 500)
+
+
+} 
+// CLOSE FORM
+
+
+onMounted(() => {
+
+
+  console.log("Form reset on page reload")
+})
 
 // expose to parent so you can call openForm()
 defineExpose({

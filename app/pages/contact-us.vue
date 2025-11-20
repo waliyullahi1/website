@@ -117,15 +117,14 @@
                                     Registration</span></UiTypographyH2>
 
                             <form action="" class=" md:px-4 px-2 md:pt-4 pt-2 space-y-7">
-                                <FormInput label="Full Name" type="text" name="fullname" />
+                                <FormInput v-model:inputValue="form.fullname" label="Full Name" type="text" :required="true" name="fullname" />
 
-                                <FormInput label="Email Address" type="email" name="email" />
+                                <FormInput v-model:inputValue="form.email" label="Email Address" :required="true" name="email" />
 
-                                <FormInput label="Phone Number" type="tel" name="phone" />
+                                <FormInput v-model:inputValue="form.phone" label="Phone Number" :required="true" type="tel" name="phone" />
 
-                                <FormTextarea label="Message" name="message" />
-
-                                <UiButtonsPrimary><span>Submit</span></UiButtonsPrimary>
+                                <FormTextarea v-model:inputValue="form.message" label="Message" :required="true" name="message" />
+                                <UiButtonsPrimary @click="submit" :loading="false"  type="submit"><span>Susbmit</span></UiButtonsPrimary>
                             </form>
 
                         </div>
@@ -147,14 +146,65 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import { useFormStore } from '@/stores/formStore'
+const formStore = useFormStore()
+const form = formStore.form  
+const isLoading = ref(false)
+
+
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
 const trademarkformFunctions = ref(null)
 
 
+// LOAD SAVED DATA WHEN PAGE OPENS
 
+
+
+
+// SAVE FORM ON SUBMIT
+const submit = async (e) => {
+ 
+     await sendEmail()
+e.preventDefault()
+setTimeout(()=>{
+  
+   router.push('/forms')
+ isLoading.value = false
+
+}, 500)
+
+
+} 
+
+
+// const sendEmail = async () => {
+//   try {
+//     await emailjs.send(
+//       SERVICE_ID,
+//       TEMPLATE_ID,
+//       {
+//         from_name: form.value.name,
+//         from_email: form.value.email,
+//         message: form.value.message
+//       },
+//       PUBLIC_KEY
+//     )
+//     alert('Email sent successfully!')
+//     form.value.name = ''
+//     form.value.email = ''
+//     form.value.message = ''
+//   } catch (error) {
+//     console.error('Error sending email:', error)
+//     alert('Failed to send email.')
+//   }
+// }
+
+// OPEN FORM FUNCTION
 const openform = () => {
-
-   trademarkformFunctions.value.openForm()
-    
+  trademarkformFunctions.value.openForm()
 }
 </script>
