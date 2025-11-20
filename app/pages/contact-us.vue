@@ -168,7 +168,7 @@ const trademarkformFunctions = ref(null)
 // SAVE FORM ON SUBMIT
 const submit = async (e) => {
  
-     await sendEmail()
+    
 e.preventDefault()
 setTimeout(()=>{
   
