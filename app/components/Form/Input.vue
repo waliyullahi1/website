@@ -7,15 +7,16 @@
         :id="inputId"
         :type="computedType"
         :value="inputValue"
+        :required="required"
         :disabled="disabled"
         :autocomplete="autocomplete || 'off'"
         @input="!disabled && handleInput($event)"
         @focus="!disabled && handleFocus()"
         @blur="!disabled && handleBlur()"
-        :class="inputClasses"
-        class="w-full py-3 px-4 border text-sm outline-none ring-0 focus:outline-none bg-white peer placeholder-transparent relative"
+        :class="[inputClasses, placeholder ? ' ' : 'placeholder-transparent', ]"
+        class="w-full py-3 px-4 border  outline-none ring-0 focus:outline-none rounded-md bg-white peer relative"
         :style="disabled ? '' : 'transition: border-color 300ms ease-out, color 300ms ease-out;'"
-        :placeholder="label"
+        :placeholder="label ||  placeholderLabel"
       />
 
       <!-- Reveal/hide password toggle -->
@@ -55,6 +56,10 @@ export default {
       type: String,
       required: true
     },
+    required: {
+      type: Boolean,
+      default: false
+    },
     inputValue: String,
     type: String,
     disabled: Boolean,
@@ -63,6 +68,11 @@ export default {
       default: false,
       type: Boolean
     },
+    placeholder: {
+      type: Boolean,
+      default: false
+    },
+    placeholderLabel: String,
     fluid: {
       default: true,
       type: Boolean
