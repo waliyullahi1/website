@@ -204,7 +204,11 @@
         Happy Users Say About Us
       </UiTypographyH2>
 
-      
+      <div class="mt-16 flex-col lg:flex-row flex items-center justify-between">
+        <img src="/images/quote-left.svg" class="w-40 opacity-10" alt="">
+          <Testimonials class="lg:max-w-2xl"></Testimonials>
+        <img src="/images/quote-right.svg" class="w-40 opacity-10" alt="">
+      </div>
   </Container>
 </template>
 
