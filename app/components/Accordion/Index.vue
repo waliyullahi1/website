@@ -1,5 +1,5 @@
 <template>
-  <ul class="accordion" role="list" aria-roledescription="accordion">
+  <ul class="accordion max-w-2xl mx-auto mt-16" role="list" aria-roledescription="accordion">
     <slot></slot>
   </ul>
 </template>
@@ -35,7 +35,5 @@ export default {
 <style>
 .accordion {
     list-style: none;
-    margin: 0;
-    padding: 0;
   }
 </style>
