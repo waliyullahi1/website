@@ -2,15 +2,16 @@
     <div>
         <Trademarkform ref="trademarkformFunctions" />
         <!-- Hero section about us -->
-        <section class=" hero bg-[url('@/assets/images/inner-banner.png')] pb-10 pt-20 ">
-            <Container>
+        <section class=" hero bg-[url('/images/law.jpg')] bg-cover bg-no-repeat  ">
+          <div class=" bg-black/70 pb-10 pt-20">
+              <Container class=" ">
                 <div class="md:w-1/2 text-white">
                     <UiTypographyP color="white">
                         <span class=" font-bold">About Us</span>
                     </UiTypographyP>
                     <div class=" py-2">
                         <UiTypographyH1 color="white">
-                            <span class="  font-bold">About Trademark Legal Shield</span>
+                            <span class="  font-bold">About Trademax</span>
                         </UiTypographyH1>
                     </div>
                     <UiTypographyP color="white">
@@ -19,11 +20,12 @@
                     </UiTypographyP>
                     <div class="pt-4 sm:flex block sm:space-y-0  space-y-4 sm:space-x-4">
                         <UiButtonsPrimary @click="openform"><span>Register My Trademark</span></UiButtonsPrimary>
-                        <UiButtonsSecondary @click="" color="white"><span>Live Chat</span></UiButtonsSecondary>
+                        <UiButtonsSecondary @click="openChat" color="white"><span>Live Chat</span></UiButtonsSecondary>
                     </div>
 
                 </div>
             </Container>
+          </div>
         </section>
 
         <!-- reason-choose-us  details here -->
@@ -158,7 +160,7 @@
 
 
                     </div>
-                    <div class=" hidden lg:flex">
+                    <div class=" hidden h-fit lg:flex">
                         <img src="@/assets/images/secure-your-brand.png" alt="secure your brands" srcset="">
                     </div>
                 </div>
@@ -166,8 +168,9 @@
         </section>
 
         <!--  section click to register your trademark  -->
-        <section class=" hero bg-[url('@/assets/images/cta-bg1.png')] pb-10 pt-20  bg-c">
-            <Container>
+        <section class=" bg-[url('/images/statue-of-liberty.jpg')] bg-cover bg-no-repeat   bg-c">
+           <div class=" pb-10 pt-20   bg-black/50">
+             <Container>
                 <div class="md:w-1/2 text-white">
 
                     <div class=" py-2">
@@ -181,11 +184,12 @@
                     </UiTypographyP>
                     <div class="pt-4 sm:flex block sm:space-y-0  space-y-4 sm:space-x-4">
                         <UiButtonsPrimary @click="openform"><span>Register My Trademark</span></UiButtonsPrimary>
-                        <UiButtonsSecondary @click="" color="white"><span>Live Chat</span></UiButtonsSecondary>
+                        <UiButtonsSecondary  @click="openChat" color="white"><span>Live Chat</span></UiButtonsSecondary>
                     </div>
 
                 </div>
             </Container>
+           </div>
         </section>
 
         <!-- FAQS Sections -->
@@ -365,6 +369,12 @@ const faqList = ref([
 //Functions 
 const openform = () => {
     trademarkformFunctions.value.openForm()
+}
+
+const openChat = ()=>{
+     if (window.Tawk_API) {
+    window.Tawk_API.maximize();
+  }
 }
 
 
