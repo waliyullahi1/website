@@ -2,7 +2,7 @@
     <div>
         <Trademarkform ref="trademarkformFunctions" />
         <!-- Hero section contact us -->
-        <section class=" bg-[url('@/assets/images/inner-banner.png')] pb-10 pt-20 ">
+        <section class=" bg-[url('/images/law.jpg')] bg-cover bg-no-repeat pb-10 pt-20 ">
             <Container>
                 <div class="md:w-1/2 text-white">
                     <UiTypographyP color="white">
@@ -19,7 +19,7 @@
                     </UiTypographyP>
                     <div class="pt-4 sm:flex block sm:space-y-0  space-y-4 sm:space-x-4">
                         <UiButtonsPrimary @click="openform"><span>Register My Trademark</span></UiButtonsPrimary>
-                        <UiButtonsSecondary @click="" color="white"><span>Live Chat</span></UiButtonsSecondary>
+                        <UiButtonsSecondary @click="openChat"  color="white"><span>Live Chat</span></UiButtonsSecondary>
                     </div>
 
                 </div>
@@ -180,7 +180,11 @@ setTimeout(()=>{
 
 } 
 
-
+const openChat = ()=>{
+     if (window.Tawk_API) {
+    window.Tawk_API.maximize();
+  }
+}
 
 // OPEN FORM FUNCTION
 const openform = () => {

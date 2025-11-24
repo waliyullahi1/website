@@ -1,5 +1,6 @@
 <template>
-  <UiTypographyH1 color="secondary" class="text-center mt-28 mb-1">United States</UiTypographyH1>
+  <Trademarkform ref="trademarkformFunctions" />
+  <UiTypographyH1 color="secondary" class="text-center pt-28 mb-1">United States</UiTypographyH1>
   <header class="text-center mt-0 pb-10 pt-1">
     <Container :addTopBottomPadding="false">
       <UiTypographyH1 color="white">Trademark Registration</UiTypographyH1>
@@ -89,7 +90,7 @@
         </div>
       </div>
 
-      <UiButtonsPrimary class="mx-auto mt-16">Register My Trademark</UiButtonsPrimary>
+      <UiButtonsPrimary  @click="openform" class="mx-auto mt-16">Register My Trademark</UiButtonsPrimary>
   </Container>
 
   <section class="bg-accent-100 bg-opacity-40" id="pricing">
@@ -118,7 +119,7 @@
             <li>*(Govt. filing fee not included)</li>
           </ul>
 
-          <UiButtonsPrimary flexdisplay class="mt-6">Get Started</UiButtonsPrimary>
+          <UiButtonsPrimary  @click="openform" flexdisplay class="mt-6">Get Started</UiButtonsPrimary>
         </div>
 
         <div class="border border-accent-300 hover:border-secondary p-6 bg-white">
@@ -138,7 +139,7 @@
             <li>*(Govt. filing fee not included)</li>
           </ul>
 
-          <UiButtonsPrimary flexdisplay class="mt-6">Get Started</UiButtonsPrimary>
+          <UiButtonsPrimary  @click="openform" flexdisplay class="mt-6">Get Started</UiButtonsPrimary>
         </div>
 
         <div class="border border-accent-300 hover:border-secondary p-6 bg-white">
@@ -162,7 +163,7 @@
             <li>*(Govt. filing fee not included)</li>
           </ul>
 
-          <UiButtonsPrimary flexdisplay class="mt-6">Get Started</UiButtonsPrimary>
+          <UiButtonsPrimary   @click="openform" flexdisplay class="mt-6">Get Started</UiButtonsPrimary>
         </div>
 
         <div class="border border-accent-300 hover:border-secondary p-6 bg-white">
@@ -190,7 +191,7 @@
             <li>*(Govt. filing fee not included)</li>
           </ul>
 
-          <UiButtonsPrimary flexdisplay class="mt-6">Get Started</UiButtonsPrimary>
+          <UiButtonsPrimary  @click="openform" flexdisplay class="mt-6">Get Started</UiButtonsPrimary>
         </div>
 
       </div>
@@ -315,7 +316,7 @@
       <UiTypographyP color="white" class="max-w-2xl mx-auto">Unregistered trademarks can lead to costly legal battles. Protect your brand with {{projectName}}'s expert services—fast, reliable, and hassle-free. Secure your exclusive rights now before it's too late!</UiTypographyP>
 
       <div class="mt-16 flex gap-8 justify-center">
-        <UiButtonsPrimary class="hover:bg-white hover:text-secondary">Register My Trademark</UiButtonsPrimary>
+        <UiButtonsPrimary  @click="openform" class="hover:bg-white hover:text-secondary">Register My Trademark</UiButtonsPrimary>
         <UiButtonsSecondary class="hover:text-white hover:border-white">Get in touch</UiButtonsSecondary>
       </div>
     </Container>
@@ -325,6 +326,14 @@
 <script setup>
 const config = useRuntimeConfig()
 const projectName = config.public.projectName
+const trademarkformFunctions = ref(null)
+import { ref } from 'vue'
+
+
+
+const openform = () => {
+  trademarkformFunctions.value.openForm()
+}
 </script>
 
 <style>
