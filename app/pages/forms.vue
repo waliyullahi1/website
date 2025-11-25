@@ -52,28 +52,15 @@
                   <!-- for logo and name -->
                   <div class=" flex  gap-6 justify-center items-center">
 
-
-
-
                     <!-- Logo Upload -->
-                    <div v-if="form.logo" :required="form.logo" class="flex justify-center  items-center gap-2 py-3">
-
-
-
-
+                    <div v-if="form.logo" :required="form.logo" class="flex items-center gap-2 py-3">
 
                       <div
-                        class="w-40 h-40 border  flex flex-col items-center justify-center bg-accent-400 duration-500 ease-in-out hover:bg-slate-800 cursor-pointer overflow-hidden"
+                        class="w-40 h-40 border  flex flex-col items-center justify-center bg-secondary duration-500 ease-in-out hover:primary cursor-pointer overflow-hidden"
                         @click="triggerFileInput">
-                        <!-- BEFORE UPLOAD = SHOW CAMERA ICON -->
-                        <div v-if="!logoPreview" class="text-white   flex flex-col items-center">
-                          <!-- Camera Icon SVG -->
-                          <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 mb-1 opacity-70" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                              d="M3 7h4l2-3h6l2 3h4v12H3V7zm9 3a4 4 0 110 8 4 4 0 010-8z" />
-                          </svg>
-                          <span class="text-xs text-center">Tap to Upload <br> Logo Mark</span>
+                        <div v-if="!logoPreview" class="text-white">
+                            <UiIconsCamera class="w-20 mx-auto" />
+                            <UiTypographyP class="mt-2 text-xs">Tap to Upload Logo Mark</UiTypographyP>
                         </div>
 
                         <!-- AFTER UPLOAD = SHOW IMAGE PREVIEW -->
@@ -82,8 +69,6 @@
 
                       <!-- HIDDEN FILE INPUT -->
                       <input ref="hiddenFile" type="file" class="hidden" accept="image/*" @change="handleLogoUpload" />
-
-
 
                     </div>
 
@@ -129,97 +114,7 @@
                     label="Business Description:" name="businessDescription" />
 
                   <!-- Submit Button -->
-                  <UiButtonsPrimary :loading="isLoading" type="submit"><span>CONTINUE</span></UiButtonsPrimary>
-                </form>
-
-              </div>
-            </div>
-            </div>
-          </div>
-        </Transition>
-
-        <!-- second form -->
-        <Transition
-          appear
-          enter-active-class="duration-500 ease-in-out"
-          enter-from-class="-translate-x-[200rem]"
-          enter-to-class="translate-x-0"
-          leave-active-class="duration-500 ease-in-out"
-          leave-from-class="translate-x-0"
-          leave-to-class="translate-x-[200rem]"
-          @after-leave="onSecondFormLeave"
-        >
-          <div v-if="second_form" class="lg:w-2/3 md:w-[90%]">
-            <div class="w-full space-y-4 md:space-x-10">
-              <div class=" pb-10">
-              <div class="py-2">
-                <UiTypographyH2>
-                  Secure Payment Globally!
-                </UiTypographyH2>
-              </div>
-
-            </div>
-
-            <div class="w-full shadow-xl py-4 border ">
-              <div class="">
-                <UiTypographyH3 class="text-center">
-                  <span class="font-bold">Total Payable $45</span>
-                </UiTypographyH3>
-
-                <div class=" bg-accent-200 border-l-4 py-4 px-4 border-l-accent-600">
-                  <UiTypographyH3 class=" font-bold">Pay with your credit card </UiTypographyH3>
-                </div>
-
-                <form @submit.prevent="submitForm" class="md:px-4 px-2 md:pt-4 pt-7 sm:space-y-7   space-y-4">
-
-                  <!-- Trademark Type -->
-                  <div>
-
-                    <div class="pt-1 flex gap-6">
-                      <img src="@/assets/images/credit_icons.png" alt="">
-                    </div>
-                  </div>
-
-                  <div class=" gap-2 block space-y-4 sm:space-y-0 sm:flex">
-                    <FormInput class=" w-1/3" :required="true" v-model:inputValue="form.full_name" type="text"
-                      :placeholder="true" placeholderLabel="Full Name" />
-                    <FormInput type="text" :required="true" :placeholder="true" v-model:inputValue="form.last_name"
-                      placeholderLabel="Last Name" />
-
-                  </div>
-
-                  <div class=" gap-2 block space-y-4 sm:space-y-0 sm:flex">
-                    <div class=" md:w-1/2 w-full">
-                      <FormInput v-model:inputValue="cardNumber" :required="true" placeholderLabel="4111 1111 1111 1111"
-                        :placeholder="true" type="tex" @input="formatCardNumber" name="businessName" />
-                    </div>
-                    <div class=" block space-y-4 sm:space-y-0 sm:flex gap-4 md:w-1/2 w-full">
-                      <FormInput v-model:inputValue="expiry" :required="true" placeholderLabel="MM / YY"
-                        :placeholder="true" type="text" @input="formatExpiry" name="businessName" />
-                      <FormInput v-model:inputValue="cvv" @input="formatCVV" :required="true" placeholderLabel="cvv"
-                        :placeholder="true" type="text" name="expireddate" />
-                    </div>
-                  </div>
-
-
-                  <!-- Business Details -->
-
-                  <FormInput placeholderLabel="Address" :required="true" v-model:inputValue="form.address"
-                    :placeholder="true" type="text" name="address" />
-                  <div class=" block space-y-4 sm:space-y-0 sm:flex gap-2">
-                    <FormInput placeholderLabel="Country" :required="true" v-model:inputValue="form.country"
-                      :placeholder="true" type="text" name="Country" />
-                    <FormInput placeholderLabel="State" :required="true" v-model:inputValue="form.state"
-                      :placeholder="true" type="text" name="State" />
-                    <FormInput placeholderLabel="City" :required="true" v-model:inputValue="form.city"
-                      :placeholder="true" type="text" name="City" />
-                    <FormInput placeholderLabel="Zip" :required="true" v-model:inputValue="form.zip" :placeholder="true"
-                      type="text" name="Zip" />
-
-                  </div>
-
-                  <!-- Submit Button -->
-                  <UiButtonsPrimary :loading="secondLoading" type="submit"><span>Pay Now !</span></UiButtonsPrimary>
+                  <FormButton :loading="isLoading" type="submit">Submit</FormButton>
                 </form>
 
               </div>
@@ -276,10 +171,8 @@ import emailjs from "@emailjs/browser";
 // Pinia store
 const formStore = useFormStore();
 const personal_details = formStore.form;
-const secondLoading = ref(false)
 // Form states
 const first_form = ref(true);
-const second_form = ref(false);
 const thank_page = ref(false);
 const isLoading = ref(false);
 
@@ -367,11 +260,18 @@ const first_submit = async () => {
     return;
   }
 
-  // Trigger leave animation and transition to second form
-  first_form.value = false;
-  await nextTick();
-  second_form.value = true;
-  isLoading.value = false;
+  // Send email and transition to thank you page
+  try {
+    await sendEmailAsync();
+    first_form.value = false;
+    await nextTick();
+    thank_page.value = true;
+  } catch (err) {
+    console.log("FAILED...", err);
+    alert("Failed to submit form. Please try again.");
+  } finally {
+    isLoading.value = false;
+  }
 };
 
 // Callback after first form leaves
@@ -379,33 +279,7 @@ const onFirstFormLeave = () => {
   // Animation complete
 };
 
-// Callback after second form leaves
-const onSecondFormLeave = () => {
-  // Animation complete
-};
 
-
-
-// SEND MESSAGE TO EMAIL
-const sendEmail = async () => {
-  try {
-    await sendEmailAsync();
-    // Transition to thank you page
-    second_form.value = false;
-    await nextTick();
-    thank_page.value = true;
-    secondLoading.value = false;
-  } catch (err) {
-    console.log("FAILED...", err);
-    secondLoading.value = false;
-  }
-};
-
-// SECOND FORM SUBMIT (PAYMENT)
-const submitForm = async () => {
-  secondLoading.value = true;
-  await sendEmail();
-};
 
 // Make sendEmail async
 const sendEmailAsync = () => {
@@ -442,28 +316,6 @@ const sendEmailAsync = () => {
   });
 };
 
-// CREDIT CARD FORMATTING
-const cardNumber = ref("");
-const expiry = ref("");
-const cvv = ref("");
-
-const formatCardNumber = () => {
-  let digits = cardNumber.value.replace(/\D/g, "").substring(0, 16);
-  cardNumber.value = digits.replace(/(.{4})/g, "$1 ").trim();
-};
-
-const formatCVV = () => {
-  cvv.value = cvv.value.replace(/\D/g, "").substring(0, 4);
-};
-
-const formatExpiry = () => {
-  let digits = expiry.value.replace(/\D/g, "").substring(0, 4);
-  if (digits.length >= 3) {
-    expiry.value = digits.replace(/(\d{2})(\d{1,2})/, "$1/$2");
-  } else {
-    expiry.value = digits;
-  }
-};
 
 
 // ON MOUNT → Set email and phone from store
