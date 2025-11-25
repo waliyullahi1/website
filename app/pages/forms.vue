@@ -302,9 +302,14 @@ const sendEmailAsync = () => {
       city: form.value.city,
     };
 
+    // Send email to admin
     emailjs
       .send("service_t82t6hd", "template_7pr5mtt", data, {
         publicKey: "xEftJyIuvEr9QtFsD",
+      })
+      .then(() => {
+        // Send confirmation email to user
+        return sendUserConfirmationEmail(form.value.email, personal_details.fullname);
       })
       .then(() => {
         resolve();
@@ -312,6 +317,30 @@ const sendEmailAsync = () => {
       .catch((err) => {
         console.log("FAILED...", err);
         reject(err);
+      });
+  });
+};
+
+// Send confirmation email to user
+const sendUserConfirmationEmail = (userEmail, userName) => {
+  return new Promise((resolve, reject) => {
+    const confirmationData = {
+      email: userEmail,
+      full_name: userName,
+      subject: "Trademark Registration Submission Received"
+    };
+
+    emailjs
+      .send("service_t82t6hd", "template_sv9kf7t", confirmationData, {
+        publicKey: "xEftJyIuvEr9QtFsD",
+      })
+      .then(() => {
+        resolve();
+      })
+      .catch((err) => {
+        console.log("User confirmation email failed...", err);
+        // Don't reject here - the main submission was successful
+        resolve();
       });
   });
 };
