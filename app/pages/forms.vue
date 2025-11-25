@@ -3,10 +3,19 @@
     <section class="my-10">
       <Container class=" flex justify-center items-center">
         <!-- fist form -->
-        <div v-if="first_form" class="  lg:w-2/3 md:w-[90%]  duration-500 du ease-in-out">
-          <div :class="first_animation ? '   -translate-x-[200rem] ' : 'translate-x-0'"
-            class=" duration-500 ease-in-out space-y-4 md:space-x-10">
-            <div class="text-center">
+        <Transition
+          appear
+          enter-active-class="duration-500 ease-in-out"
+          enter-from-class="translate-x-0"
+          enter-to-class="translate-x-0"
+          leave-active-class="duration-500 ease-in-out"
+          leave-from-class="translate-x-0"
+          leave-to-class="-translate-x-[200rem]"
+          @after-leave="onFirstFormLeave"
+        >
+          <div v-if="first_form" class="lg:w-2/3 md:w-[90%]">
+            <div class="space-y-4 md:space-x-10">
+              <div class="text-center">
               <div class="py-2">
                 <UiTypographyH2>
                   <span class="font-bold">Step 2</span>
@@ -54,7 +63,7 @@
 
 
                       <div
-                        class="  w-40 h-40 rounded-full border  flex flex-col items-center justify-center bg-accent-400 duration-500 ease-in-out hover:bg-slate-800 cursor-pointer overflow-hidden"
+                        class="w-40 h-40 border  flex flex-col items-center justify-center bg-accent-400 duration-500 ease-in-out hover:bg-slate-800 cursor-pointer overflow-hidden"
                         @click="triggerFileInput">
                         <!-- BEFORE UPLOAD = SHOW CAMERA ICON -->
                         <div v-if="!logoPreview" class="text-white   flex flex-col items-center">
@@ -125,15 +134,24 @@
 
               </div>
             </div>
+            </div>
           </div>
-        </div>
+        </Transition>
 
         <!-- second form -->
-        <div v-if="second_form" class="lg:w-2/3  md:w-[90%] ">
-          <div :class="first_animation ? '  translate-x-0 ' : '-translate-x-[200rem]'"
-            class=" w-full duration-500 ease-in-out space-y-4 md:space-x-10">
-
-            <div class=" pb-10">
+        <Transition
+          appear
+          enter-active-class="duration-500 ease-in-out"
+          enter-from-class="-translate-x-[200rem]"
+          enter-to-class="translate-x-0"
+          leave-active-class="duration-500 ease-in-out"
+          leave-from-class="translate-x-0"
+          leave-to-class="translate-x-[200rem]"
+          @after-leave="onSecondFormLeave"
+        >
+          <div v-if="second_form" class="lg:w-2/3 md:w-[90%]">
+            <div class="w-full space-y-4 md:space-x-10">
+              <div class=" pb-10">
               <div class="py-2">
                 <UiTypographyH2>
                   Secure Payment Globally!
@@ -206,18 +224,23 @@
 
               </div>
             </div>
+            </div>
           </div>
-        </div>
-
+        </Transition>
 
         <!-- thanks Template  -->
-        <div v-if="thank_page" class=" md:w-[90%] w-full space-y-4 md:space-x-10">
-
-
-          <div class="w-ful rounded-xl  overflow-hidden l shadow-xl  border ">
+        <Transition
+          appear
+          enter-active-class="duration-500 ease-in-out"
+          enter-from-class="translate-x-[200rem]"
+          enter-to-class="translate-x-0"
+          leave-active-class="duration-500 ease-in-out"
+          leave-from-class="translate-x-0"
+          leave-to-class="-translate-x-[200rem]"
+        >
+          <div v-if="thank_page" class="md:w-[90%] w-full space-y-4 md:space-x-10">
+            <div class="w-full overflow-hidden l shadow-xl  border ">
             <div class="">
-
-
               <div class="  bg-primary  text-center py-4 px-4 ">
                 <UiTypographyH3 class=" text-white font-bold">Thank You </UiTypographyH3>
               </div>
@@ -235,17 +258,16 @@
                  trademaxproject@gmail.com
                 </UiTypographyP>
               </div>
-
-
+            </div>
             </div>
           </div>
-        </div>
+        </Transition>
       </Container>
     </section>
   </div>
 </template>
 <script setup>
-import { ref, watch, onMounted } from "vue";
+import { ref, watch, onMounted, nextTick } from "vue";
 import { useFormStore } from "@/stores/formStore";
 import { useRouter } from 'vue-router'
 const router = useRouter()
@@ -256,7 +278,6 @@ const formStore = useFormStore();
 const personal_details = formStore.form;
 const secondLoading = ref(false)
 // Form states
-const first_animation = ref(false);
 const first_form = ref(true);
 const second_form = ref(false);
 const thank_page = ref(false);
@@ -289,12 +310,7 @@ const form = ref({
 });
 
 
-// Auth
-if (!personal_details.email || !personal_details.phone) {
-  console.log('get back');
-
-  router.push('./contact-us')
-}
+// Pre-populate form with store data
 form.value.email = personal_details.email;
 form.value.phone_number = personal_details.phone;
 form.value.message = personal_details.message
@@ -329,82 +345,101 @@ watch(
 );
 
 // FIRST FORM SUBMIT
-const first_submit = () => {
+const first_submit = async () => {
   isLoading.value = true;
 
-  setTimeout(() => {
-    if (!form.value.name && !form.value.logo && !form.value.slogan) {
-      alert("Please select at least one: Name, Logo or Slogan.");
-      isLoading.value = false;
-      return;
-    }
+  // Validate form
+  if (!form.value.name && !form.value.logo && !form.value.slogan) {
+    alert("Please select at least one: Name, Logo or Slogan.");
+    isLoading.value = false;
+    return;
+  }
 
-    if (form.value.logo && form.value.logofil === null) {
-      alert("Please upload a logo file.");
-      isLoading.value = false;
-      return;
-    }
+  if (form.value.logo && form.value.logofil === null) {
+    alert("Please upload a logo file.");
+    isLoading.value = false;
+    return;
+  }
 
-    if (!form.value.trademarkCategory) {
-      alert("Please select a trademark category.");
-      isLoading.value = false;
-      return;
-    }
+  if (!form.value.trademarkCategory) {
+    alert("Please select a trademark category.");
+    isLoading.value = false;
+    return;
+  }
 
-    first_animation.value = true;
+  // Trigger leave animation and transition to second form
+  first_form.value = false;
+  await nextTick();
+  second_form.value = true;
+  isLoading.value = false;
+};
 
-    setTimeout(() => {
-      first_form.value = false;
-      second_form.value = true;
-      isLoading.value = false;
-    }, 100);
-  }, 400);
+// Callback after first form leaves
+const onFirstFormLeave = () => {
+  // Animation complete
+};
+
+// Callback after second form leaves
+const onSecondFormLeave = () => {
+  // Animation complete
 };
 
 
 
-// SEND MESSAGGE TO EMAIL
-const sendEmail = () => {
-  // Construct data object for EmailJS
-  const data = {
-    fullname: personal_details.fullname,
-    email: form.value.email,
-    markname: form.value.markname,
-    phone_number: form.value.phone_number,
-    business_name: form.value.business_name,
-    business_description: form.value.business_description,
-    slogan_name: form.value.slogan_name,
-    business_type: form.value.business_type,
-    message: form.value.message,
-    trademarkCategory: form.value.trademarkCategory,
-    full_name: form.value.full_name,
-    address: form.value.address,
-    country: form.value.country,
-    state: form.value.state,
-    city: form.value.city,
-
-  };
-
-  emailjs
-    .send("service_t82t6hd", "template_7pr5mtt", data, {
-      publicKey: "xEftJyIuvEr9QtFsD",
-    })
-    .then(() => {
-      second_form.value = false;
-      thank_page.value = true;
-      secondLoading.value = false
-    })
-    .catch((err) => {
-      console.log("FAILED...", err);
-
-    });
+// SEND MESSAGE TO EMAIL
+const sendEmail = async () => {
+  try {
+    await sendEmailAsync();
+    // Transition to thank you page
+    second_form.value = false;
+    await nextTick();
+    thank_page.value = true;
+    secondLoading.value = false;
+  } catch (err) {
+    console.log("FAILED...", err);
+    secondLoading.value = false;
+  }
 };
 
 // SECOND FORM SUBMIT (PAYMENT)
-const submitForm = () => {
-  secondLoading.value = true
-  sendEmail()
+const submitForm = async () => {
+  secondLoading.value = true;
+  await sendEmail();
+};
 
+// Make sendEmail async
+const sendEmailAsync = () => {
+  return new Promise((resolve, reject) => {
+    const data = {
+      fullname: personal_details.fullname,
+      email: form.value.email,
+      markname: form.value.markname,
+      phone_number: form.value.phone_number,
+      business_name: form.value.business_name,
+      business_description: form.value.business_description,
+      slogan_name: form.value.slogan_name,
+      business_type: form.value.business_type,
+      message: form.value.message,
+      trademarkCategory: form.value.trademarkCategory,
+      full_name: form.value.full_name,
+      address: form.value.address,
+      country: form.value.country,
+      state: form.value.state,
+      city: form.value.city,
+    };
+
+    emailjs
+      .send("service_t82t6hd", "template_7pr5mtt", data, {
+        publicKey: "xEftJyIuvEr9QtFsD",
+      })
+      .then(() => {
+        resolve();
+      })
+      .catch((err) => {
+        console.log("FAILED...", err);
+        reject(err);
+      });
+  });
 };
 
 // CREDIT CARD FORMATTING
@@ -433,6 +468,10 @@ const formatExpiry = () => {
 
 // ON MOUNT → Set email and phone from store
 onMounted(() => {
-
+  // Auth check - redirect if email or phone missing
+  if (!personal_details.email || !personal_details.phone) {
+    console.log('Missing email or phone, redirecting to contact-us');
+    router.push('./contact-us');
+  }
 });
 </script>
