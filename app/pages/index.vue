@@ -439,14 +439,14 @@
     </section>
 
     <section class="cta">
-      <Container class="text-center">
+      <Container class="sm:text-center text-left  text-white">
         <UiTypographyH2 color="white">Don't Risk Your Brand's Future!</UiTypographyH2>
         <UiTypographyP color="white" class="max-w-2xl mx-auto">Unregistered trademarks can lead to costly legal battles.
           Protect your brand with {{ projectName }}'s expert services—fast, reliable, and hassle-free. Secure your
           exclusive
           rights now before it's too late!</UiTypographyP>
-
-        <div class="mt-16 flex gap-8 justify-center">
+          
+        <div class="mt-16 sm:flex  space-y-3 block gap-8 ">
           <UiButtonsPrimary @click="openform" class="hover:bg-white hover:text-secondary">Register My Trademark
           </UiButtonsPrimary>
           <UiButtonsSecondary class="hover:text-white hover:border-white">Get in touch</UiButtonsSecondary>
