@@ -5,19 +5,21 @@
 
         <!-- Show thank you page after submission -->
         <div v-if="showThankYou" class="lg:w-2/3 md:w-[90%] w-full">
-          <div class="w-full overflow-hidden shadow-xl border">
-            <div class="bg-primary text-center py-4 px-4">
-              <UiTypographyH3 class="text-white font-bold">Thank You</UiTypographyH3>
+          <div class="w-full overflow-hidden shadow-xl border rounded-lg">
+            <div class="bg-primary text-center py-8 px-4">
+              <div class="flex justify-center mb-4">
+                <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center">
+                  <span class="text-primary text-4xl">✓</span>
+                </div>
+              </div>
+              <UiTypographyH2 class="text-white font-bold">Thank You!</UiTypographyH2>
             </div>
-            <div class="px-4">
-              <UiTypographyP class="text-center text-gray-600 p-6">
-                You have successfully submitted your application for trademark registration!
+            <div class="px-8 py-10 text-center">
+              <UiTypographyP class="text-lg text-gray-700 mb-4">
+                We have received your trademark registration submission.
               </UiTypographyP>
-              <UiTypographyP class="text-center">
-                We have received all your information, and our case filing experts are currently reviewing your trademark application. Please note that your application fee has not been charged yet. A case officer will contact you within 12 hours to confirm the details, after which the fee will be processed.
-              </UiTypographyP>
-              <UiTypographyP class="text-center text-gray-600 p-6">
-                Should you have any query, please feel free to reach us at +1 (415) 579 1344 or trademaxproject@gmail.com
+              <UiTypographyP class="text-gray-600">
+                Our team will review your application and contact you shortly.
               </UiTypographyP>
             </div>
           </div>
@@ -43,9 +45,9 @@
             >
               <div class="flex items-center gap-3">
                 <span v-if="section1Complete" class="text-green-600 text-2xl">✓</span>
-                <UiTypographyP>
+                <UiTypographygitP>
                   <span class="font-bold">Section 1: Trademark Details</span>
-                </UiTypographyP>
+                </UiTypographygitP>
               </div>
               <span v-if="section1Complete" class="text-sm text-gray-600">Click to edit</span>
             </div>
@@ -70,44 +72,52 @@
 
 
                   <!-- for logo and name -->
-                  <div class=" flex  gap-6 justify-center items-center">
+                  <div class="flex flex-col md:flex-row gap-6 items-center">
 
                     <!-- Logo Upload -->
-                    <div v-if="form.logo" :required="form.logo" class="flex items-center gap-2 py-3">
+                    <div v-if="form.logo" :required="form.logo" class="flex flex-col">
+                      <label class="text-sm font-medium text-gray-700 mb-3">Upload Logo</label>
 
                       <div
-                        class="w-40 h-40 border  flex flex-col items-center justify-center bg-secondary duration-500 ease-in-out hover:primary cursor-pointer overflow-hidden"
+                        class="relative w-48 h-48 border-2 border-dashed rounded-lg flex flex-col items-center justify-center bg-gray-50 hover:bg-gray-100 duration-300 ease-in-out cursor-pointer overflow-hidden group"
+                        :class="logoPreview ? 'border-primary' : 'border-gray-300'"
                         @click="triggerFileInput">
-                        <div v-if="!logoPreview" class="text-white">
-                            <UiIconsCamera class="w-20 mx-auto" />
-                            <UiTypographyP class="mt-2 text-xs">Tap to Upload Logo Mark</UiTypographyP>
+
+                        <!-- Upload prompt -->
+                        <div v-if="!logoPreview" class="text-center px-4">
+                          <UiIconsCamera class="w-16 mx-auto text-gray-400 group-hover:text-primary transition-colors" />
                         </div>
 
-                        <!-- AFTER UPLOAD = SHOW IMAGE PREVIEW -->
-                        <img v-else :src="logoPreview" class="w-full h-full object-cover" />
+                        <!-- Image preview with overlay -->
+                        <div v-else class="relative w-full h-full">
+                          <img :src="logoPreview" class="w-full h-full object-contain p-2" />
+                          <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
+                            <UiTypographyP class="text-white opacity-0 group-hover:opacity-100 transition-opacity text-sm font-medium">
+                              Click to change
+                            </UiTypographyP>
+                          </div>
+                        </div>
                       </div>
 
                       <!-- HIDDEN FILE INPUT -->
                       <input ref="hiddenFile" type="file" class="hidden" accept="image/*" @change="handleLogoUpload" />
-
                     </div>
 
-                    <!-- Mark Name -->
-                    <div v-if="form.name" class=" w-full">
+                    <!-- Name and Slogan -->
+                    <div class="w-full space-y-7">
+                    <div v-if="form.name" class="w-full">
                       <FormInput :required="form.markname" v-model:inputValue="form.relname" label="Enter Mark Here"
                         type="text" name="markName" />
                     </div>
 
-
-                  </div>
-
-                  <!-- Slogan -->
-                  <div class="" v-if="form.slogan">
-                    <FormInput v-model:inputValue="form.slogan_name" :required="form.slogan" label="Enter Slogan Here"
+                    <div class="" v-if="form.slogan">
+                      <FormInput v-model:inputValue="form.slogan_name" :required="form.slogan" label="Enter Slogan Here"
                       type="text" name="slogan" />
+                    </div>
+                    </div>
+
 
                   </div>
-
                   <!-- Trademark Category -->
                   <FormSelect v-model:selectedOption="form.trademarkCategory" :required="true"
                     label="Please select the entity type that is applying for the trademark:" :options="[
