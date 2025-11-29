@@ -6,7 +6,7 @@
           <div class="flex justify-center mb-8">
             <UiIconsStar class="w-5 text-secondary" v-for="i in 5" :key="i" />
           </div>
-          <UiTypographyH3 color="primary" class="text-center">{{ testimonial.quote }}</UiTypographyH3>
+          <UiTypographyP color="primary" class="text-center">{{ testimonial.quote }}</UiTypographyP>
 
           <div class="mt-8 text-center">
             <UiTypographyP class="marcellus">{{ testimonial.name }}</UiTypographyP>

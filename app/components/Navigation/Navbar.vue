@@ -8,11 +8,16 @@
         <NavigationLogo @logoClicked="handleLogoClick" />
 
         <!-- Desktop Navigation -->
+         
         <div class="hidden md:flex gap-8  flex-shrink-0">
           <UiButtonsTertiary  @clicked="scrollToSection('pricing')">Pricing</UiButtonsTertiary>
           <UiButtonsTertiary  @clicked="scrollToSection('faqs')">FAQs</UiButtonsTertiary>
+         
+        </div>
+        <div class=" hidden md:flex gap-8  flex-shrink-0">  
           <UiButtonsPrimary @click="openform">Register my Trademark</UiButtonsPrimary>
         </div>
+         
 
         <!-- Mobile Menu Toggle -->
         <NavigationToggle @revealMenu="toggleMenu" />

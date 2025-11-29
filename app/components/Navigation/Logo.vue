@@ -1,5 +1,5 @@
 <template>
-  <button @click="$emit('logoClicked')" class="flex items-center gap-3 text-4xl text-secondary marcellus">
+  <button @click="$emit('logoClicked')" class="flex items-center font-bold gap-3 text-2xl text-secondary marcellus">
     {{ projectName }}
   </button>
 </template>

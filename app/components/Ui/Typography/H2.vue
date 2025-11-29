@@ -7,7 +7,7 @@
       : color==='primary'
       ? 'text-primary'
       : 'text-neutral-800'"
-    class="text-3xl md:text-4xl 2xl:text-5xl"
+    class="text-xl md:text-2xl 2xl:text-4xl"
   >
     <slot/>
   </h2>

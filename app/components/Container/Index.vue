@@ -1,6 +1,6 @@
 <template>
   <div
-    class="max-w-[95vw] md:max-w-[90vw] 2xl:max-w-7xl mx-auto px-4 sm:px-6"
+    class="container  lg:w-[90%] mx-auto px-4 sm:px-6"
     :class="[addTopBottomPadding ? 'py-10 lg:py-20' : '']"
   >
     <slot />
@@ -15,3 +15,7 @@ const props = defineProps({
   },
 });
 </script>
+
+<style>
+
+</style>
