@@ -179,7 +179,7 @@
 
 
     <!-- hidden this section (what are will do) -->
-    <Container class="text-center  ">
+    <Container class="text-center  hidden">
       <UiTypographyP small_text class="flex items-center justify-center gap-2 mb-2 uppercase">
         <span class="h-1 aspect-square rounded-full bg-secondary" v-for="i in 2"></span>
         How it Works
@@ -240,111 +240,10 @@
           </UiTypographyP>
 
           <UiTypographyH2 class="text-center mx-auto">Simple, Transparent Pricing</UiTypographyH2>
-          <!-- <span class="sm:text-2xl text-center text-3xl leading-snug font-extrabold">
-                Simple, Transparent Pricing
-              </span> -->
-          <div class=" hidden md:grid-cols-2 xl:grid-cols-2 mt-16 gap-4">
+         
+          <div class="grid md:grid-cols-3 xl:grid-cols-3 mt-16 gap- ">
 
-            <div class="border border-accent-300 hover:border-secondary p-6 bg-white">
-              <UiTypographyP class="uppercase font-bold"><strong>Basic</strong></UiTypographyP>
-              <UiTypographyP small_text class="">Best for startups needing protection in one trademark class with simple
-                requirements.</UiTypographyP>
-              <UiTypographyH2 color="secondary" class="mt-4">$45</UiTypographyH2>
-              <UiTypographyP>+ filing fee ($350/class)</UiTypographyP>
-
-              <ul class="list-inside list-disc h-44 overflow-y-scroll mt-6">
-                <li>Case Review</li>
-                <li>Case Filing</li>
-                <li>Basic Search</li>
-                <li>State E-Filing</li>
-                <li>Trademark Secured</li>
-                <li>*(Govt. filing fee not included)</li>
-              </ul>
-
-              <UiButtonsPrimary @click="openform" flexdisplay class="mt-6">Get Started</UiButtonsPrimary>
-            </div>
-
-            <div class="border border-accent-300 hover:border-secondary p-6 bg-white">
-              <UiTypographyP class="uppercase font-bold"><strong>Standard</strong></UiTypographyP>
-              <UiTypographyP small_text class="">Great for small businesses covering multiple product or service
-                classes.
-              </UiTypographyP>
-              <UiTypographyH2 color="secondary" class="mt-4">$149</UiTypographyH2>
-              <UiTypographyP>+ filing fee ($350/class)</UiTypographyP>
-
-              <ul class="list-inside list-disc h-44 overflow-y-scroll mt-6">
-                <li>Case Review</li>
-                <li>Case Filing</li>
-                <li>Direct Hit Search</li>
-                <li>Trademark Alerts</li>
-                <li>Trademark Secured</li>
-                <li>High Satisfaction Rate</li>
-                <li>Refusal Risk Meter</li>
-                <li>*(Govt. filing fee not included)</li>
-              </ul>
-
-              <UiButtonsPrimary @click="openform" flexdisplay class="mt-6">Get Started</UiButtonsPrimary>
-            </div>
-
-            <div class="border border-accent-300 hover:border-secondary p-6 bg-white">
-              <UiTypographyP class="uppercase font-bold"><strong>Deluxe</strong></UiTypographyP>
-              <UiTypographyP small_text class="">For brands needing extra support, including help with USPTO office
-                actions.</UiTypographyP>
-              <UiTypographyH2 color="secondary" class="mt-4">$299</UiTypographyH2>
-              <UiTypographyP>+ filing fee ($350/class)</UiTypographyP>
-
-              <ul class="list-inside list-disc h-44 overflow-y-scroll mt-6">
-                <li>Case Review</li>
-                <li>Case Filing</li>
-                <li>Direct Hit Search</li>
-                <li>Trademark Alerts</li>
-                <li>Trademark Secured</li>
-                <li>High Satisfaction Rate</li>
-                <li>Refusal Risk Meter</li>
-                <li>Trademark Monitoring</li>
-                <li>Complete Documentation</li>
-                <li>Digital File</li>
-                <li>Dedicated Case Manager</li>
-                <li>*(Govt. filing fee not included)</li>
-              </ul>
-
-              <UiButtonsPrimary @click="openform" flexdisplay class="mt-6">Get Started</UiButtonsPrimary>
-            </div>
-
-            <div class="border border-accent-300 hover:border-secondary p-6 bg-white">
-              <UiTypographyP class="uppercase font-bold"><strong>Platinum</strong></UiTypographyP>
-              <UiTypographyP small_text class="">All-inclusive plan with monitoring, renewals, and full legal
-                assistance.
-              </UiTypographyP>
-              <UiTypographyH2 color="secondary" class="mt-4">$299</UiTypographyH2>
-              <UiTypographyP>+ filing fee ($350/class)</UiTypographyP>
-
-              <ul class="list-inside list-disc h-44 overflow-y-scroll mt-6">
-                <li>Case Review</li>
-                <li>Case Filing</li>
-                <li>Direct Hit Search</li>
-                <li>Trademark Alerts</li>
-                <li>Trademark Secured</li>
-                <li>High Satisfaction Rate</li>
-                <li>Refusal Risk Meter</li>
-                <li>Trademark Monitoring</li>
-                <li>Complete Documentation</li>
-                <li>Digital File</li>
-                <li>Dedicated Case Manager</li>
-                <li>High Approval Rate</li>
-                <li>Comprehensive Trademark Search Report (Federal & State)</li>
-                <li>High Priority Service</li>
-                <li>cease & desist letter</li>
-                <li>*(Govt. filing fee not included)</li>
-              </ul>
-
-              <UiButtonsPrimary @click="openform" flexdisplay class="mt-6">Get Started</UiButtonsPrimary>
-            </div>
-
-          </div>
-          <div class="grid md:grid-cols-2 xl:grid-cols-3 mt-16 gap- ">
-
-            <div v-for="(item, index) in prices" :key="index" class="group xl:last:col-start-2 flex justify-center">
+            <div v-for="(item, index) in prices" :key="index" class="group xl:last:col-start-3 flex justify-center">
               <div
                 class="rounded-2xl p-6 bg-white group-hover:shadow-2xl shadow-xl group-hover:scale-105 h scale-95 duration-150 max-w-sm w-full">
 

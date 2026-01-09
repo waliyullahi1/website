@@ -16,15 +16,15 @@
         <!-- Desktop Navigation -->
         <div class="hidden md:flex gap-8 flex-shrink-0">
           <NuxtLink to="/" activeClass="active-link">
-            <p class="font-semibold text-lg cursor-pointer">Home</p>
+            <p class="font-semibold t cursor-pointer">Home</p>
           </NuxtLink>
 
           <NuxtLink to="/about-us" activeClass="active-link">
-            <p class="font-semibold text-lg cursor-pointer">About us</p>
+            <p class="font-semibold te cursor-pointer">About us</p>
           </NuxtLink>
 
           <NuxtLink to="/contact-us" activeClass="active-link">
-            <p class="font-semibold text-lg cursor-pointer">Contact us</p>
+            <p class="font-semibold  cursor-pointer">Contact us</p>
           </NuxtLink>
         </div>
 
