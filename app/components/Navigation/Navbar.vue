@@ -50,6 +50,9 @@
           <UiButtonsTertiary @clicked="scrollToSection('faqs')">
             FAQs
           </UiButtonsTertiary> -->
+           <NuxtLink to="/" activeClass="active-link">
+            <p class="font-semibold t cursor-pointer">Home</p>
+          </NuxtLink>
                     <NuxtLink to="/about-us" activeClass="active-link">
             <p class="font-semibold te cursor-pointer">About us</p>
           </NuxtLink>
