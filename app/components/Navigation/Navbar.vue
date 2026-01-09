@@ -43,13 +43,20 @@
           v-if="menuRevealed"
           class="flex flex-col items-start gap-12 md:hidden absolute bg-white h-screen top-[4.6rem] left-0 px-6 py-10 w-full"
         >
-          <UiButtonsTertiary @clicked="scrollToSection('pricing')">
+          <!-- <UiButtonsTertiary @clicked="scrollToSection('pricing')">
             Pricing
           </UiButtonsTertiary>
 
           <UiButtonsTertiary @clicked="scrollToSection('faqs')">
             FAQs
-          </UiButtonsTertiary>
+          </UiButtonsTertiary> -->
+                    <NuxtLink to="/about-us" activeClass="active-link">
+            <p class="font-semibold te cursor-pointer">About us</p>
+          </NuxtLink>
+
+          <NuxtLink to="/contact-us" activeClass="active-link">
+            <p class="font-semibold  cursor-pointer">Contact us</p>
+          </NuxtLink>
 
           <UiButtonsPrimary @click="openform">
             Register my Trademark

@@ -1,5 +1,5 @@
 <template>
-  <p :class="[  small_text ? 'text-sm lg:text-base' : 'text-base lg:text-lg']" class="font-normal">
+  <p :class="[  small_text ? 'text-sm lg:text-base' : 'text-base lg:text-md']" class="font-normal">
     <slot/>
   </p>
 </template>

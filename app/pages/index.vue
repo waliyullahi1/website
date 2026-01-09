@@ -179,7 +179,7 @@
 
 
     <!-- hidden this section (what are will do) -->
-    <Container class="text-center  hidden">
+    <Container class="text-center  ">
       <UiTypographyP small_text class="flex items-center justify-center gap-2 mb-2 uppercase">
         <span class="h-1 aspect-square rounded-full bg-secondary" v-for="i in 2"></span>
         How it Works
@@ -243,9 +243,9 @@
          
           <div class="grid md:grid-cols-3 xl:grid-cols-3 mt-16 gap- ">
 
-            <div v-for="(item, index) in prices" :key="index" class="group xl:last:col-start-3 flex justify-center">
+            <div v-for="(item, index) in prices" :key="index" class="group xl:last:col-start-2 flex justify-center">
               <div
-                class="rounded-2xl p-6 bg-white group-hover:shadow-2xl shadow-xl group-hover:scale-105 h scale-95 duration-150 max-w-sm w-full">
+                class="rounded-2xl p-6 bg-white group-hover:shadow-xl shadow-lg  group-hover:scale-105 h scale-95 duration-150 max-w-sm w-full">
 
                 <div class="bg-[#3D7B7B] rounded-xl w-fit px-4">
                   <p class="text-white py-1 mb-5 text-lg font-medium">
@@ -254,7 +254,7 @@
                 </div>
 
                 <UiTypographyP small_text>
-                  Best for startups needing protection in one trademark class with simple requirements.
+                  {{ item.description }}
                 </UiTypographyP>
 
                 <UiTypographyH2 color="secondary" class="mt-4">
