@@ -9,6 +9,21 @@ export default defineNuxtPlugin(() => {
       tawk.setAttribute("crossorigin", "*");
 
       document.body.appendChild(tawk);
+
+      // Wait for Tawk to load
+      window.Tawk_API = window.Tawk_API || {};
+      window.Tawk_LoadStart = new Date();
+
+      window.Tawk_API.onLoad = function () {
+        // Hide the text bubble (show only icon)
+        window.Tawk_API.hideGreeting();
+
+        // Move widget position (example: bottom-left)
+        window.Tawk_API.setPosition("bottom-left");
+
+        // Optional: hide completely until clicked
+        // window.Tawk_API.hideWidget();
+      };
     }
   }
 });

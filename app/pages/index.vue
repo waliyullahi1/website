@@ -241,7 +241,7 @@
 
           <UiTypographyH2 class="text-center mx-auto">Simple, Transparent Pricing</UiTypographyH2>
          
-          <div class="grid md:grid-cols-3 xl:grid-cols-3 mt-16 gap- ">
+          <div class=" md:flex block  mt-16 gap- ">
 
             <div v-for="(item, index) in prices" :key="index" class="group xl:last:col-start-2 flex justify-center">
               <div
@@ -269,7 +269,7 @@
                 </UiTypographyP>
 
                 <ul class="list-inside h-48 custom-scroll list-disc overflow-y-auto mt-6">
-                  <li v-for="value in item.list">{{ value }}</li>
+                  <li class="  text-gray-700" v-for="value in item.list">{{ value }}</li>
                 </ul>
 
                 <UiButtonsPrimary @click="openform()"
@@ -516,14 +516,7 @@ const prices = ref([
       'Case Review',
       'Case', 'Basic Search', 'Direct Hit Search', 'Trademark Alerts', 'Trademark Secured', 'High Satisfaction Rate', 'Refusal Risk Meter', 'Trademark Monitoring', 'Complete Documentation', 'Digital File', 'Dedicated Case Manager', '*(Govt. filing fee not included)']
   },
-  {
-    package: 'Deluxe',
-    description: 'For brands needing extra support, including help with USPTO office actions.',
-    price: '$299',
-    list: [
-      'Case Review',
-      'Case', 'Basic Search', 'Direct Hit Search', 'Trademark Alerts', 'Trademark Secured', 'High Satisfaction Rate', 'Refusal Risk Meter', 'Trademark Monitoring', 'Complete Documentation', 'Digital File', 'Dedicated Case Manager', '*(Govt. filing fee not included)']
-  }
+
 ])
 </script>
 

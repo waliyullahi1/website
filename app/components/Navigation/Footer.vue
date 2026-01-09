@@ -1,7 +1,7 @@
 <template>
   <footer class="border-t border-accent-200 w-full">
 
-    <Container :addTopBottomPadding="false" class="border-t border-accent-200 py-6 flex items-center justify-between">
+    <Container :addTopBottomPadding="false" class="border-t border-accent-200 py-6 sm:flex block items-center justify-between">
       <NavigationLogo class="" />
       <UiTypographyP>&copy;{{ new Date().getFullYear() }} {{ projectName }}. All rights reserved.</UiTypographyP>
     </Container>
