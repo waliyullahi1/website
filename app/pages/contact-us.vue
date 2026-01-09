@@ -1,38 +1,45 @@
 <template>
     <div>
         <!-- Hero section contact us -->
-        <section class=" bg-[url('/images/law.jpg')] bg-cover bg-no-repeat pb-10 pt-20 ">
-            <Container>
-                <div class="md:w-1/2 text-white">
-                    <UiTypographyP color="white">
-                        <span class=" font-bold">Have questions or need help?</span>
-                    </UiTypographyP>
-                    <div class=" py-2">
-                        <UiTypographyH1 color="white">
-                            <span class="  font-bold">Contact Us</span>
-                        </UiTypographyH1>
-                    </div>
-                    <UiTypographyP color="white">
-                        Reach out to our expert team — we're here to guide you through every step, answer your
-                        questions, and ensure a smooth experience from start to finish.
-                    </UiTypographyP>
-                    <div class="pt-4 sm:flex block sm:space-y-0  space-y-4 sm:space-x-4">
-                        <UiButtonsPrimary @click="router.push('/forms')"><span>Register My Trademark</span></UiButtonsPrimary>
-                        <UiButtonsSecondary @click="openChat"  color="white"><span>Live Chat</span></UiButtonsSecondary>
-                    </div>
+        <section class=" bg-[url('/images/law.jpg')] bg-cover bg-no-repeat  ">
+            <div class="bg-black/70 pb-10 pt-20 ">
+                <Container class="">
+                    <div class="md:w-1/2 text-white">
+                        <UiTypographyP color="white">
+                            <span class=" font-bold">Have questions or need help?</span>
+                        </UiTypographyP>
+                        <div class=" py-2">
+                            <UiTypographyH1 color="white">
+                                <span class="  font-bold">Contact Us</span>
+                            </UiTypographyH1>
+                        </div>
+                        <UiTypographyP color="white">
+                            Reach out to our expert team — we're here to guide you through every step, answer your
+                            questions, and ensure a smooth experience from start to finish.
+                        </UiTypographyP>
+                        <div class="pt-4 sm:flex block sm:space-y-0  space-y-4 sm:space-x-4">
+                            <UiButtonsPrimary @click="router.push('/forms')"><span>Register My Trademark</span>
+                            </UiButtonsPrimary>
+                            <UiButtonsSecondary @click="openChat" color="white"><span>Live Chat</span>
+                            </UiButtonsSecondary>
+                        </div>
 
-                </div>
-            </Container>
+                    </div>
+                </Container>
+            </div>
+
         </section>
 
         <!-- List all the contact details here -->
         <section class="">
             <Container>
-                <div class="flex md:flex-row flex-col  items-center justify-center md:space-y-0 space-y-4   md:space-x-10">
+                <div
+                    class="flex md:flex-row flex-col  items-center justify-center md:space-y-0 space-y-4   md:space-x-10">
                     <div class="md:w-[300px] sm:w-[250px] space-y-4">
                         <!-- phone number list -->
                         <div>
-                            <div class=" group border sm:p-8 p-4 flex flex-col space-y-4 w-full  justify-center items-center">
+                            <div
+                                class=" group border sm:p-8 p-4 flex flex-col space-y-4 w-full  justify-center items-center">
                                 <!-- contact card -->
                                 <div
                                     class=" rounded-full sm:p-6 p-3  bg-accent-100 group-hover:bg-white flex w-fit items-center">
@@ -116,14 +123,19 @@
                                     Registration</span></UiTypographyH2>
 
                             <form action="" class=" md:px-4 px-2 md:pt-4 pt-2 space-y-7">
-                                <FormInput v-model:inputValue="form.fullname" label="Full Name" type="text" :required="true" name="fullname" />
+                                <FormInput v-model:inputValue="form.fullname" label="Full Name" type="text"
+                                    :required="true" name="fullname" />
 
-                                <FormInput v-model:inputValue="form.email" label="Email Address" :required="true" name="email" />
+                                <FormInput v-model:inputValue="form.email" label="Email Address" :required="true"
+                                    name="email" />
 
-                                <FormInput v-model:inputValue="form.phone" label="Phone Number" :required="true" type="tel" name="phone" />
+                                <FormInput v-model:inputValue="form.phone" label="Phone Number" :required="true"
+                                    type="tel" name="phone" />
 
-                                <FormTextarea v-model:inputValue="form.message" label="Message" :required="true" name="message" />
-                                <UiButtonsPrimary @click="submit" :loading="isLoading"  type="submit"><span>Submit</span></UiButtonsPrimary>
+                                <FormTextarea v-model:inputValue="form.message" label="Message" :required="true"
+                                    name="message" />
+                                <UiButtonsPrimary @click="submit" :loading="isLoading" type="submit"><span>Submit</span>
+                                </UiButtonsPrimary>
                             </form>
 
                         </div>
@@ -134,12 +146,15 @@
 
         <section>
 
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d52985044.58842398!2d-161.9138848282545!3d35.85021790022551!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54eab584e432360b%3A0x1c3bb99243deb742!2sUnited%20States!5e0!3m2!1sen!2sng!4v1763288173138!5m2!1sen!2sng" width="100%" height="450" style="border:0;" allowfullscreen="true" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d52985044.58842398!2d-161.9138848282545!3d35.85021790022551!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54eab584e432360b%3A0x1c3bb99243deb742!2sUnited%20States!5e0!3m2!1sen!2sng!4v1763288173138!5m2!1sen!2sng"
+                width="100%" height="450" style="border:0;" allowfullscreen="true" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 
         </section>
 
-        
+
 
     </div>
 </template>
@@ -156,25 +171,25 @@ const router = useRouter()
 
 // SAVE FORM ON SUBMIT
 const submit = async (e) => {
-  e.preventDefault()
+    e.preventDefault()
+    isLoading.value = true
+    // Simple contact form: Save data and redirect to forms
+    formStore.setFormData({
+        fullname: form.value.fullname,
+        email: form.value.email,
+        phone: form.value.phone,
+        message: form.value.message
+    })
 
-  // Simple contact form: Save data and redirect to forms
-  formStore.setFormData({
-    fullname: form.value.fullname,
-    email: form.value.email,
-    phone: form.value.phone,
-    message: form.value.message
-  })
-
-  setTimeout(() => {
-    router.push('/forms')
-    isLoading.value = false
-  }, 500)
+    setTimeout(() => {
+        router.push('/forms')
+        isLoading.value = false
+    }, 500)
 }
 
 const openChat = () => {
-  if (window.Tawk_API) {
-    window.Tawk_API.maximize();
-  }
+    if (window.Tawk_API) {
+        window.Tawk_API.maximize();
+    }
 }
 </script>

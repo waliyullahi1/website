@@ -1,59 +1,49 @@
 <template>
   <div class=" bg-[#FEFEFE]">
     <!-- <UiTypographyH1 color="secondary" class="text-center pt-28 mb-1">United States</UiTypographyH1> -->
-    <header class=" mt-0  h-[100vh] pt-1">
-      <Container :addTopBottomPadding="false" class="  text-white h-full flex  items-center">
-        <div class="lg:w-[50%] md:w-4/5  w-full h-fit ">
+    <header class="mt-0 h-[100vh] pt-1 hero-section">
+      <Container :addTopBottomPadding="false" class="text-white h-full flex items-center">
+        <div class="lg:w-[50%] md:w-4/5 w-full h-fit">
 
-          <div class=" space-y-3 py-2">
-            <UiTypographyP color="white" class=" font-bold"><span class=" font-bold">Ready to Protect Your Brand</span>
+          <div class="space-y-3 py-2">
+            <UiTypographyP color="white" class="font-bold hero-fade-up delay-1">
+              <span class="font-bold">Ready to Protect Your Brand</span>
             </UiTypographyP>
-            <UiTypographyH1 class=" font-bold  py-2 f" color="white">
+
+            <UiTypographyH1 class="font-bold py-2 hero-fade-up delay-2" color="white">
               We Make U.S. Trademark Registration Stress-Free.
             </UiTypographyH1>
           </div>
-          <UiTypographyP color="white">
+
+          <UiTypographyP color="white" class="hero-fade-up delay-3">
             We understand that your brand is more than just a name or logo — it’s the foundation of your
             business identity and reputation
           </UiTypographyP>
-          <div class="pt-4 sm:flex block sm:space-y-0  space-y-4 sm:space-x-4">
-            <UiButtonsPrimary @click="openform"><span>Register My Trademark</span></UiButtonsPrimary>
-            <UiButtonsSecondary @click="openChat" color="white"><span>Live Chat</span></UiButtonsSecondary>
+
+          <div class="pt-4 sm:flex block sm:space-y-0 space-y-4 sm:space-x-4 hero-fade-up delay-4">
+            <UiButtonsPrimary @click="openform">
+              <span>Register My Trademark</span>
+            </UiButtonsPrimary>
+
+            <UiButtonsSecondary @click="openChat" color="white">
+              <span>Live Chat</span>
+            </UiButtonsSecondary>
           </div>
 
         </div>
-
-
       </Container>
-      <!-- <Container :addTopBottomPadding="false">
-        <UiTypographyH1 color="white">Trademark Registration</UiTypographyH1>
-        <UiTypographyP color="white" class="max-w-2xl mx-auto">Secure your name, logo, or slogan with fast, affordable trademark registration backed by expert legal guidance.</UiTypographyP>
-
-        <div class="grid gap-2 my-8">
-          <UiTypographyP color="white"  class="flex items-center justify-center gap-4">
-            <UiIconsCheck  class="text-secondary w-6"/>
-            Maximise your chances for successful TM registration
-          </UiTypographyP>
-          <UiTypographyP color="white"  class="flex items-center justify-center gap-4">
-            <UiIconsCheck  class="text-secondary w-6"/>
-            Flat-fee pricing with no hidden costs
-          </UiTypographyP>
-          <UiTypographyP color="white"  class="flex items-center justify-center gap-4">
-            <UiIconsCheck  class="text-secondary w-6"/>
-            Experienced legal team in your corner, just 1-click away
-          </UiTypographyP>
-        </div>
-
-        <UiIconsArrow class="w-20 text-secondary mx-auto mt-32 animate-bounce" />
-      </Container> -->
     </header>
+
+
 
     <section>
       <Container class="text-center">
-        <UiTypographyH2 class=" font-bold">AN Intellectual Property LAw Firm <br class=" hidden sm:block"> that Disrupts the Status Quo
+        <UiTypographyH2 class=" font-bold">An Intellectual Property Law Firm <br class=" hidden sm:block"> that Disrupts
+          the Status Quo
         </UiTypographyH2>
         <div class=" py-4 flex justify-center items-center">
-          <UiTypographyP class=" w-full md:w-[70%] text-center text-gray-500">Our IP law firm moves beyond traditional firm models
+          <UiTypographyP class=" w-full md:w-[70%] text-center text-gray-500">Our IP law firm moves beyond traditional
+            firm models
             – we offer
             flat-fee trademark fees and flexible pricing structures that eliminate outdated invoicing.No hourly
             surprises, just aligned strategy and transparent guidance from a trademark attorney.</UiTypographyP>
@@ -85,7 +75,8 @@
 
 
           </div>
-          <div class=" md:w-1/2 w-full hidden sm:block rounded-md overflow-hidden  bg-black bg-[url('assets/images/company-image.webp')]">
+          <div
+            class=" md:w-1/2 w-full hidden sm:block rounded-md overflow-hidden  bg-black bg-[url('assets/images/company-image.webp')]">
             <img src="@/assets/images/company-image.webp" alt="">
           </div>
         </div>
@@ -95,8 +86,8 @@
         </div>
       </Container>
     </section>
-
-    <Container class="grid lg:grid-cols-2 gap-12 lg:gap-28 items-start">
+    <!-- hidden this section (what are will do) -->
+    <Container class=" hidden lg:grid-cols-2 gap-12 lg:gap-28 items-start">
       <div>
         <UiTypographyP small_text class="flex items-center gap-2 mb-2 uppercase">
           <span class="h-1 aspect-square rounded-full bg-red-500" v-for="i in 2"></span>
@@ -131,7 +122,64 @@
       </div>
     </Container>
 
-    <Container class="text-center">
+
+    <!-- Simple Process Steps  details here -->
+    <section class="  hidden bg-gray-100/50 reason-choose-us ">
+      <Container>
+        <div class="  lg:flex gap-5 ">
+          <div class=" hidden  w lg:flex">
+            <img src="@/assets/images/three-steps-your-brand.png" class="" alt="Simple Process Steps" srcset="">
+          </div>
+
+          <div class=" lg:w-1/2 w-full space-y-5 r">
+            <UiTypographyP class="">
+              <span class="bg-accent-200 px-2 py-1 font-bold">Simple Process Steps</span>
+            </UiTypographyP>
+
+            <UiTypographyH2>
+              <span class="sm:text-5xl text-3xl leading-snug font-extrabold">
+                Three Steps to Register Your Brand’s Trademark
+              </span>
+            </UiTypographyH2>
+
+            <UiTypographyP>
+              Registering your trademark is now more straightforward than ever.
+              At Trademax, we’ve created a smooth and efficient three-step
+              process that minimizes confusion, avoids unnecessary delays, and saves you time.
+              Whether you're a startup founder, a growing business owner, or managing an established
+              brand, our skilled trademark experts handle every part of your application with precision,
+              compliance, and care.
+            </UiTypographyP>
+
+            <div
+              class="relative mt-4 space-y-6  flex flex-col   before:content-['']  before:block before:absolute before:inset-0   before:-z-10   before:top-0  before:left-5  before:sm:left-7  before:w-1   before:h-4/5   before:bg-gray-600">
+
+              <div v-for="value in stepToTakeList" :key="value" class="flex  items-start gap-2 sm:gap-5">
+                <div
+                  class="rounded-full bg-white sm:border-8 border-4 flex justify-center items-center border-accent-300 p-4 sm:w-16 w-10 h-10 sm:h-16">
+                  <UiTypographyH3><strong>0{{ value.id }}</strong></UiTypographyH3>
+                </div>
+
+                <div>
+                  <UiTypographyH3><span class="font-bold">{{ value.title }}</span></UiTypographyH3>
+                  <UiTypographyP>
+                    {{ value.description }}
+                  </UiTypographyP>
+                </div>
+              </div>
+
+            </div>
+
+
+
+          </div>
+        </div>
+      </Container>
+    </section>
+
+
+    <!-- hidden this section (what are will do) -->
+    <Container class="text-center  ">
       <UiTypographyP small_text class="flex items-center justify-center gap-2 mb-2 uppercase">
         <span class="h-1 aspect-square rounded-full bg-secondary" v-for="i in 2"></span>
         How it Works
@@ -145,28 +193,31 @@
 
       <div class="grid lg:grid-cols-3 gap-8 mt-16">
         <div class="  p-6">
-          
-            <img src="/images/form-upload.svg" class="  w-14 mb-6 mx-auto" alt="Form Submit">
-          
-          
+
+          <img src="/images/form-upload.svg" class="  w-14 mb-6 mx-auto" alt="Form Submit">
+
+
           <UiTypographyH3>Submit Your Details</UiTypographyH3>
-          <UiTypographyP class=" text-sm text-gray-600"> Share your brand name, logo, and essential business information using our secure online form.
+          <UiTypographyP class=" text-sm text-gray-600"> Share your brand name, logo, and essential business information
+            using our secure online form.
             Clear, simple, and guided from the start.</UiTypographyP>
         </div>
         <div class=" flex flex-col justify-center items-center p-6">
-        
-             <img src="/images/form-filing.svg" class=" w-14 mb-6 mx-auto" alt="Form filing">
-         
-         
+
+          <img src="/images/form-filing.svg" class=" w-14 mb-6 mx-auto" alt="Form filing">
+
+
           <UiTypographyH3 class=" font-bold">We Handle the Filing</UiTypographyH3>
-          <UiTypographyP class=" text-sm text-gray-600">SOur legal team conducts a professional trademark search, prepares your application, and files
+          <UiTypographyP class=" text-sm text-gray-600">SOur legal team conducts a professional trademark search,
+            prepares your application, and files
             it with the USPTO on your behalf — with precision and compliance built in.
             Nothing for you to figure out. We manage everything.</UiTypographyP>
         </div>
         <div class=" flex flex-col justify-center items-center p-6">
           <img src="/images/protection.svg" class="w-14 mb-6 mx-auto" alt="Shield / Protection">
           <UiTypographyH3>Get Official Protection</UiTypographyH3>
-          <UiTypographyP class=" text-sm text-gray-600">Once approved by the USPTO, your trademark is officially registered, giving you exclusive
+          <UiTypographyP class=" text-sm text-gray-600">Once approved by the USPTO, your trademark is officially
+            registered, giving you exclusive
             nationwide rights and long-term brand protection.Your identity secured — professionally and efficiently.
           </UiTypographyP>
         </div>
@@ -175,17 +226,24 @@
       <UiButtonsPrimary @click="openform" class="mx-auto mt-16">Register My Trademark</UiButtonsPrimary>
     </Container>
 
-    <section class="bg-accent-100 bg-opacity-40" id="pricing">
+    <section class=" bg-opacity-40" id="pricing">
       <Container>
-        <div class=" w-[90%] mx-auto">
-          <UiTypographyP small_text class="flex items-center justify-center gap-2 mb-2 uppercase">
+        <div class=" mx-auto">
+          <!-- <UiTypographyP small_text class="flex items-center justify-center gap-2 mb-2 uppercase">
             <span class="h-1 aspect-square rounded-full bg-secondary" v-for="i in 2"></span>
             Our Pricing
             <span class="h-1 aspect-square rounded-full bg-secondary" v-for="i in 2"></span>
-          </UiTypographyP>
-          <UiTypographyH2 class="text-center mx-auto">Simple, Transparent Pricing</UiTypographyH2>
+          </UiTypographyP> -->
 
-          <div class="grid md:grid-cols-2 xl:grid-cols-2 mt-16 gap-4">
+          <UiTypographyP class=" text-center">
+            <span class="bg-accent-200 px-2  py-1 font-bold"> Our Pricing</span>
+          </UiTypographyP>
+
+          <UiTypographyH2 class="text-center mx-auto">Simple, Transparent Pricing</UiTypographyH2>
+          <!-- <span class="sm:text-2xl text-center text-3xl leading-snug font-extrabold">
+                Simple, Transparent Pricing
+              </span> -->
+          <div class=" hidden md:grid-cols-2 xl:grid-cols-2 mt-16 gap-4">
 
             <div class="border border-accent-300 hover:border-secondary p-6 bg-white">
               <UiTypographyP class="uppercase font-bold"><strong>Basic</strong></UiTypographyP>
@@ -284,6 +342,48 @@
             </div>
 
           </div>
+          <div class="grid md:grid-cols-2 xl:grid-cols-3 mt-16 gap- ">
+
+            <div v-for="(item, index) in prices" :key="index" class="group xl:last:col-start-2 flex justify-center">
+              <div
+                class="rounded-2xl p-6 bg-white group-hover:shadow-2xl shadow-xl group-hover:scale-105 h scale-95 duration-150 max-w-sm w-full">
+
+                <div class="bg-[#3D7B7B] rounded-xl w-fit px-4">
+                  <p class="text-white py-1 mb-5 text-lg font-medium">
+                    {{ item.package }} Registration
+                  </p>
+                </div>
+
+                <UiTypographyP small_text>
+                  Best for startups needing protection in one trademark class with simple requirements.
+                </UiTypographyP>
+
+                <UiTypographyH2 color="secondary" class="mt-4">
+                  <span class="text-4xl">{{ item.price }}</span>
+                </UiTypographyH2>
+
+                <UiTypographyP>
+                  <span class=" font-bold ">+</span> filing fee
+                  <span class="text-white bg-red-700 font-semibold px-2 py-1 text-sm rounded-lg">
+                    ($350/class)
+                  </span>
+                </UiTypographyP>
+
+                <ul class="list-inside h-48 custom-scroll list-disc overflow-y-auto mt-6">
+                  <li v-for="value in item.list">{{ value }}</li>
+                </ul>
+
+                <UiButtonsPrimary @click="openform()"
+                  class="mt-6 hover:bg-gray-500  duration-500 w-full h-10 rounded-md  font-medium bg-gray-300">
+                  Get Started
+                </UiButtonsPrimary>
+
+              </div>
+            </div>
+
+          </div>
+
+
         </div>
 
       </Container>
@@ -445,7 +545,7 @@
           Protect your brand with {{ projectName }}'s expert services—fast, reliable, and hassle-free. Secure your
           exclusive
           rights now before it's too late!</UiTypographyP>
-          
+
         <div class="mt-16 sm:flex  space-y-3 block gap-8 ">
           <UiButtonsPrimary @click="openform" class="hover:bg-white hover:text-secondary">Register My Trademark
           </UiButtonsPrimary>
@@ -458,6 +558,7 @@
 
 <script setup>
 import { useRouter } from 'vue-router'
+import Button from '~/components/Form/Button.vue'
 
 const config = useRuntimeConfig()
 const projectName = config.public.projectName
@@ -467,8 +568,64 @@ const openChat = () => {
 
 }
 const openform = () => {
+  console.log('sssss');
+  
   router.push('/forms')
 }
+
+const stepToTakeList = ref([
+  {
+    id: 1,
+    title: 'Send Us Your Info',
+    description: 'Share your business name, logo, and basic details using our secure online form.',
+  },
+  {
+    id: 2,
+    title: 'We Do the Filing for You',
+    description: 'Our team checks for similar trademarks, prepares your application, and files it with the USPTO.',
+  },
+  {
+    id: 3,
+    title: 'Receive Your Trademark',
+    description: 'After approval, your trademark gets officially registered and protected across the country.',
+    image: 'ongoing-icon.png'
+  }
+])
+
+const prices = ref([
+  {
+    package: 'Basic',
+    description: 'Best for startups needing protection in one trademark class with simple requirements.',
+    price: '$45',
+    list: [
+      'Case Review',
+      'Case', 'Basic Search', 'State E-Filing', 'Trademark Secured', '*(Govt. filing fee not included)']
+  },
+  {
+    package: 'Standard',
+    description: 'Great for small businesses covering multiple product or service classes.',
+    price: '$149',
+    list: [
+      'Case Review',
+      'Case', 'Basic Search', 'Direct Hit Search', 'Trademark Alerts', 'Trademark Secured', 'High Satisfaction Rate', 'Refusal Risk Meter', '*(Govt. filing fee not included)']
+  },
+  {
+    package: 'Deluxe',
+    description: 'For brands needing extra support, including help with USPTO office actions.',
+    price: '$299',
+    list: [
+      'Case Review',
+      'Case', 'Basic Search', 'Direct Hit Search', 'Trademark Alerts', 'Trademark Secured', 'High Satisfaction Rate', 'Refusal Risk Meter', 'Trademark Monitoring', 'Complete Documentation', 'Digital File', 'Dedicated Case Manager', '*(Govt. filing fee not included)']
+  },
+  {
+    package: 'Deluxe',
+    description: 'For brands needing extra support, including help with USPTO office actions.',
+    price: '$299',
+    list: [
+      'Case Review',
+      'Case', 'Basic Search', 'Direct Hit Search', 'Trademark Alerts', 'Trademark Secured', 'High Satisfaction Rate', 'Refusal Risk Meter', 'Trademark Monitoring', 'Complete Documentation', 'Digital File', 'Dedicated Case Manager', '*(Govt. filing fee not included)']
+  }
+])
 </script>
 
 <style>
@@ -480,11 +637,31 @@ header {
   background-position: center;
 }
 
+
+
 .cta {
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/images/statue-of-liberty.jpg');
   background-blend-mode: multiply;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top;
+}
+
+.custom-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: #b78d46;
+  border-radius: 10px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+  background: #9e7636;
 }
 </style>
